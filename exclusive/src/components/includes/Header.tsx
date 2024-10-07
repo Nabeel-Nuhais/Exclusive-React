@@ -1,80 +1,71 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
-interface NavListProps {
-  isOpen: boolean; // Boolean prop to control visibility
-}
+import React, { useState } from "react";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const toggleMobileMenu = () => {
-    setMobileMenu((prev) => !prev); // Toggle mobile menu
+    setMobileMenu((prev) => !prev);
   };
 
   return (
-    <>
-      <MainHeader>
-        <Wrapper>
-          <BrandSection>
-            <Logo>Exclusive</Logo>
-          </BrandSection>
+    <MainHeader>
+      <Wrapper>
+        <BrandSection>
+          <Logo>Exclusive</Logo>
+        </BrandSection>
 
-          <NavSection>
-            <ToggleMenuButton onClick={toggleMobileMenu}>
-              <HamburgerIcon
-                src={require("../../assets/images/icons/hamburger.svg").default}
-                alt="hamburger-icon"
-              />
-            </ToggleMenuButton>
-            <NavList isOpen={mobileMenu}>
-              <NavItem>
-                <StyledNavLink to="/">Home</StyledNavLink>
-              </NavItem>
-              <NavItem>
-                <StyledNavLink to="/contact">Contact</StyledNavLink>
-              </NavItem>
-              <NavItem>
-                <StyledNavLink to="/about">About</StyledNavLink>
-              </NavItem>
-              <NavItem>
-                <StyledNavLink to="/signup">Sign Up</StyledNavLink>
-              </NavItem>
-            </NavList>
-          </NavSection>
+        <NavSection>
+          <ToggleMenuButton onClick={toggleMobileMenu}>
+            <HamburgerIcon
+              src={require("../../assets/images/icons/hamburger.svg").default}
+              alt="hamburger-icon"
+            />
+          </ToggleMenuButton>
+          <NavListWrapper open={mobileMenu}>
+            <NavItem>
+              <StyledNavLink to="/">Home</StyledNavLink>
+            </NavItem>
+            <NavItem>
+              <StyledNavLink to="/contact">Contact</StyledNavLink>
+            </NavItem>
+            <NavItem>
+              <StyledNavLink to="/about">About</StyledNavLink>
+            </NavItem>
+            <NavItem>
+              <StyledNavLink to="/signup">Sign Up</StyledNavLink>
+            </NavItem>
+          </NavListWrapper>
+        </NavSection>
 
-          <RightSection>
-            <SearchBar>
-              <SearchInput
-                type="text"
-                placeholder="What are you looking for?"
+        <RightSection>
+          <SearchBar>
+            <SearchInput type="text" placeholder="What are you looking for?" />
+            <SearchButton>
+              <SearchIcon
+                src={require("../../assets/images/icons/search.svg").default}
+                alt="search-icon"
               />
-              <SearchButton>
-                <SearchIcon
-                  src={require("../../assets/images/icons/search.svg").default}
-                  alt="search-icon"
-                />
-              </SearchButton>
-            </SearchBar>
+            </SearchButton>
+          </SearchBar>
 
-            <WishlistIconWrapper>
-              <WishlistIcon
-                src={require("../../assets/images/icons/wishlist.svg").default}
-                alt="wishlist-icon"
-              />
-            </WishlistIconWrapper>
+          <WishlistIconWrapper>
+            <WishlistIcon
+              src={require("../../assets/images/icons/wishlist.svg").default}
+              alt="wishlist-icon"
+            />
+          </WishlistIconWrapper>
 
-            <CartIconWrapper>
-              <CartIcon
-                src={require("../../assets/images/icons/Cart.svg").default}
-                alt="cart-icon"
-              />
-            </CartIconWrapper>
-          </RightSection>
-        </Wrapper>
-      </MainHeader>
-    </>
+          <CartIconWrapper>
+            <CartIcon
+              src={require("../../assets/images/icons/Cart.svg").default}
+              alt="cart-icon"
+            />
+          </CartIconWrapper>
+        </RightSection>
+      </Wrapper>
+    </MainHeader>
   );
 };
 
@@ -107,8 +98,7 @@ const BrandSection = styled.div`
   cursor: pointer;
 
   @media (max-width: 1024px) {
-    text-align: center;
-    margin-bottom: 15px;
+    text-align: start;
   }
 `;
 
@@ -132,16 +122,16 @@ const ToggleMenuButton = styled.div`
     position: absolute;
     width: 100%;
     text-align: end;
+    bottom: 0;
   }
 `;
 
 const HamburgerIcon = styled.img``;
 
-const NavList = styled.ul<NavListProps>`
-  /* Specify NavListProps type */
+const NavListWrapper = styled.ul<{ open: boolean }>`
   margin: 0;
   padding: 0;
-  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  display: ${({ open }) => (open ? "flex" : "none")};
   gap: 25px;
   list-style: none;
   position: absolute;
@@ -162,7 +152,7 @@ const NavList = styled.ul<NavListProps>`
 const NavItem = styled.li`
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -191,6 +181,7 @@ const RightSection = styled.div`
   gap: 14px;
 
   @media (max-width: 1024px) {
+    justify-content: end;
   }
 `;
 
