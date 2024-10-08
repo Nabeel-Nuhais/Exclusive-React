@@ -69,7 +69,7 @@ const ContentWrapper = styled.section`
   width: 100%;
   max-width: 75%;
   background: #000;
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 `;

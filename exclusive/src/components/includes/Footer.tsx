@@ -309,10 +309,17 @@ const FooterTextContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
+  align-items: center;
   padding: 40px 0 20px 0;
 `;
-const CopyrightWrapper = styled.div``;
-const CopyrightIcon = styled.img``;
+const CopyrightWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+`;
+const CopyrightIcon = styled.img`
+  display: block;
+  width: 100%;
+`;
 const FooterText = styled.p`
   color: #696969;
   margin: 0;
