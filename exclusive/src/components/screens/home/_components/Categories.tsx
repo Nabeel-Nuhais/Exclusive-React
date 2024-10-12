@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Categories = () => {
+const Categories = ({ categoryItems, handleCategoryChange }) => {
   return (
     <>
       <MainContainer>
@@ -22,86 +22,19 @@ const Categories = () => {
           <CategoryTitle>
             <Heading>Browse By Category</Heading>
           </CategoryTitle>
-
           <CategoryItems>
             <ItemsGrid>
-              <CategoryItem>
-                <IconWrapper>
-                  <GamingIcon
-                    src={
-                      require("../../../../assets/images/icons/Gamepad.svg")
-                        .default
-                    }
-                    alt="gaming-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>Gaming</CategoryName>
-              </CategoryItem>
-
-              <CategoryItem>
-                <IconWrapper>
-                  <ComputerIcon
-                    src={
-                      require("../../../../assets/images/icons/Computer.svg")
-                        .default
-                    }
-                    alt="computer-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>Computers</CategoryName>
-              </CategoryItem>
-
-              <CategoryItem>
-                <IconWrapper>
-                  <CameraIcon
-                    src={
-                      require("../../../../assets/images/icons/Camera.svg")
-                        .default
-                    }
-                    alt="camera-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>Camera</CategoryName>
-              </CategoryItem>
-
-              <CategoryItem>
-                <IconWrapper>
-                  <PhoneIcon
-                    src={
-                      require("../../../../assets/images/icons/CellPhone.svg")
-                        .default
-                    }
-                    alt="phone-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>Phones</CategoryName>
-              </CategoryItem>
-
-              <CategoryItem>
-                <IconWrapper>
-                  <SmartWatchIcon
-                    src={
-                      require("../../../../assets/images/icons/SmartWatch.svg")
-                        .default
-                    }
-                    alt="smartwatch-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>SmartWatch</CategoryName>
-              </CategoryItem>
-
-              <CategoryItem>
-                <IconWrapper>
-                  <HeadphoneIcon
-                    src={
-                      require("../../../../assets/images/icons/eadphone.svg")
-                        .default
-                    }
-                    alt="headphones-icon"
-                  />
-                </IconWrapper>
-                <CategoryName>HeadPhones</CategoryName>
-              </CategoryItem>
+              {categoryItems.map((category, index) => (
+                <CategoryItem key={index} onClick={()=>handleCategoryChange(category.name)}>
+                  <IconWrapper>
+                    <GamingIcon
+                      src={require(`../../../../assets/images/icons/${category.image}`)}
+                      alt="gaming-icon"
+                    />
+                  </IconWrapper>
+                  <CategoryName>{category.name}</CategoryName>
+                </CategoryItem>
+              ))}
             </ItemsGrid>
           </CategoryItems>
         </CategorySectionWrapper>
@@ -180,15 +113,5 @@ const CategoryName = styled.p`
 `;
 
 const GamingIcon = styled.img``;
-
-const ComputerIcon = styled.img``;
-
-const CameraIcon = styled.img``;
-
-const PhoneIcon = styled.img``;
-
-const SmartWatchIcon = styled.img``;
-
-const HeadphoneIcon = styled.img``;
 
 export default Categories;
