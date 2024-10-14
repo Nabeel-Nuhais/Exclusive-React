@@ -165,6 +165,7 @@ const FooterMainContainer = styled.footer`
   background-color: #000;
   display: flex;
   justify-content: center;
+  margin-top: 60px;
 `;
 const Container = styled.div`
   max-width: 100%;

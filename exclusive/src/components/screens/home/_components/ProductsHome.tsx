@@ -1,18 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const ProductsHome = ({productItems}) => {
+const ProductsHome = ({ productItems }) => {
+  const navigate = useNavigate();
 
-const eightProducts = productItems.filter((i, index) => index<=7)
+  // const eightProducts = productItems.filter((i, index) => index <= 7);
+  const eightProducts = productItems.slice(0, 8);
+
+  const handleViewAllClick = () => {
+    navigate("/products");
+  };
 
   return (
     <>
       <MainContainer>
         <CardWrapper>
           <ProductContainer>
-            {eightProducts?.map((product, index, ) => (
-               
-                
+            {eightProducts?.map((product, index) => (
               <ProductContent key={index}>
                 <TopContainer>
                   <ProductImageWrapper>
@@ -41,11 +46,13 @@ const eightProducts = productItems.filter((i, index) => index<=7)
                       />
                     </ViewIconWrapper>
                   </TopRightContainer>
+                  <AddToCartButton>Add To Cart</AddToCartButton>
                 </TopContainer>
                 <ProductDetails>
                   <ProductName>{product.name}</ProductName>
                   <PriceAndRatingContainer>
                     <ProductPrice>{product.price}</ProductPrice>
+                    <ProductOfferPrice>{product.offer_price}</ProductOfferPrice>
                     <StarRatingWrapper>
                       <StarIcon
                         src={
@@ -59,12 +66,13 @@ const eightProducts = productItems.filter((i, index) => index<=7)
                   </PriceAndRatingContainer>
                 </ProductDetails>
               </ProductContent>
-              
             ))}
           </ProductContainer>
 
           <ButtonContainer>
-            <AddToCartButton>View Al lProducts</AddToCartButton>
+            <ViewAllButton onClick={handleViewAllClick}>
+              View All Products
+            </ViewAllButton>
           </ButtonContainer>
         </CardWrapper>
       </MainContainer>
@@ -82,15 +90,36 @@ const CardWrapper = styled.div`
   max-width: 75%;
 `;
 
+const AddToCartButton = styled.button`
+  background: #000;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  bottom: 0px;
+  width: 100%;
+`;
+
 const TopContainer = styled.div`
   display: flex;
   justify-content: center;
   border: 1px solid #f5f5f5;
   padding: 30px 0;
-  position: relative;
   background: #f5f5f5;
   border-radius: 4px;
+  height: 60%;
   cursor: pointer;
+
+  position: relative;
+
+  &:hover ${AddToCartButton} {
+    opacity: 1;
+  }
 `;
 
 const TopRightContainer = styled.div`
@@ -131,7 +160,9 @@ const ProductContainer = styled.div`
 
 const ProductContent = styled.div``;
 
-const ProductImageWrapper = styled.div``;
+const ProductImageWrapper = styled.div`
+  align-self: center;
+`;
 
 const ProductImage = styled.img``;
 
@@ -166,15 +197,18 @@ const RatingCount = styled.span`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 25px 0;
+  margin: 25px 0 50px 0;
 `;
 
-const AddToCartButton = styled.button`
+const ViewAllButton = styled.button`
   background: #db4444;
   padding: 16px 48px;
   color: #fff;
   border: 1px solid #db4444;
   border-radius: 4px;
 `;
+
+const ProductOfferPrice = styled.p``;
+
 
 export default ProductsHome;

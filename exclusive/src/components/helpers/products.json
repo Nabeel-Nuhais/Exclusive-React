@@ -102,7 +102,7 @@
     {
       "id": 12,
       "name": "RGB Liquid CPU Cooler",
-      "offer-price": "$160",
+      "offer_price": "$160",
       "price": "$170",
       "rating": 65,
       "category": ["Gaming"],

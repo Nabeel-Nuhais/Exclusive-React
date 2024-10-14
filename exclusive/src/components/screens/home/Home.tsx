@@ -6,6 +6,7 @@ import Footer from "../../includes/Footer.tsx";
 import Categories from "./_components/Categories.tsx";
 import ProductsHome from "./_components/ProductsHome.tsx";
 import allProucts from "../../helpers/products.json"
+import Services from "./_components/Services.tsx";
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
       <Spotlight />
       <Categories categoryItems={categories} handleCategoryChange={handleCategoryChange} />
       <ProductsHome productItems={filterProducts} />
+      <Services />
       <Footer />
     </>
   );

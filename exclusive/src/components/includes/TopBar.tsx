@@ -16,7 +16,7 @@ const TopBar = () => {
           <PromoText>
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           </PromoText>
-          <ShopButton to={"/products"}>ShopNow</ShopButton>
+          <ShopButton to={""}>ShopNow</ShopButton>
         </PromoSection>
 
         <LanguageSelector>

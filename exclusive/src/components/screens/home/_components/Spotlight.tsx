@@ -139,7 +139,7 @@ const ActionButton = styled.button`
 
 const ButtonLabelUnderline = styled.div`
   border-bottom: 1px solid #fff;
-  padding-bottom: 8px;
+  padding-bottom: 5px;
 `;
 
 const ButtonLabel = styled.span`
