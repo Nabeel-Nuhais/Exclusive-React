@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import threeStar from "../../../../assets/images/icons/three-star.svg";
+import fourStar from "../../../../assets/images/icons/four-star.svg";
+import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
+import fiveStar from "../../../../assets/images/icons/five-star.svg";
 
 const ProductsHome = ({ productItems }) => {
+  const getStarIcon = (rating) => {
+    if (rating >= 90) return fiveStar;
+    if (rating >= 75) return fourHalfStar;
+    if (rating >= 60) return fourStar;
+    return threeStar;
+  };
+
   const navigate = useNavigate();
+
+  const initialSelectedColors = productItems.reduce((acc, product) => {
+    acc[product.id] = product.colors ? product.colors[0] : "";
+    return acc;
+  }, {});
+
+  const [selectedColors, setSelectedColors] = useState(initialSelectedColors);
 
   // const eightProducts = productItems.filter((i, index) => index <= 7);
   const eightProducts = productItems.slice(0, 8);
@@ -12,14 +30,31 @@ const ProductsHome = ({ productItems }) => {
     navigate("/products");
   };
 
+  const handleColorSelect = (color, productId) => {
+    setSelectedColors((prev) => ({
+      ...prev,
+      [productId]: color,
+    }));
+  };
+
   return (
     <>
       <MainContainer>
         <CardWrapper>
           <ProductContainer>
-            {eightProducts?.map((product, index) => (
-              <ProductContent key={index}>
+            {eightProducts?.map((product) => (
+              <ProductContent key={product.id}>
                 <TopContainer>
+                  {product["new-label"] && (
+                    <NewArrival>
+                      <NewLabel>{product["new-label"]}</NewLabel>
+                    </NewArrival>
+                  )}
+                  {product["discount-label"] && (
+                    <DiscountOffer>
+                      <DiscountLabel>{product["discount-label"]}</DiscountLabel>
+                    </DiscountOffer>
+                  )}
                   <ProductImageWrapper>
                     <ProductImage
                       src={require(`../../../../assets/images/${product.image}`)}
@@ -51,19 +86,33 @@ const ProductsHome = ({ productItems }) => {
                 <ProductDetails>
                   <ProductName>{product.name}</ProductName>
                   <PriceAndRatingContainer>
-                    <ProductPrice>{product.price}</ProductPrice>
-                    <ProductOfferPrice>{product.offer_price}</ProductOfferPrice>
+                    {product["offer-price"] ? (
+                      <>
+                        <ProductPrice>{product["offer-price"]}</ProductPrice>
+                        <OriginalPrice>{product.price}</OriginalPrice>
+                      </>
+                    ) : (
+                      <ProductPrice>{product.price}</ProductPrice>
+                    )}
                     <StarRatingWrapper>
                       <StarIcon
-                        src={
-                          require("../../../../assets/images/icons/three-star.svg")
-                            .default
-                        }
+                        src={getStarIcon(product.rating)}
                         alt="star-icon"
                       />
                     </StarRatingWrapper>
                     <RatingCount>({product.rating})</RatingCount>
                   </PriceAndRatingContainer>
+                  <ColorSelection>
+                    {product.colors?.map((color, index) => (
+                      <BorderWrapper
+                        key={index}
+                        $isActive={color === selectedColors[product.id]}
+                        onClick={() => handleColorSelect(color, product.id)}
+                      >
+                        <ColorCircle style={{ backgroundColor: color }} />
+                      </BorderWrapper>
+                    ))}
+                  </ColorSelection>
                 </ProductDetails>
               </ProductContent>
             ))}
@@ -114,12 +163,45 @@ const TopContainer = styled.div`
   border-radius: 4px;
   height: 60%;
   cursor: pointer;
-
   position: relative;
 
   &:hover ${AddToCartButton} {
     opacity: 1;
   }
+`;
+
+const NewArrival = styled.div`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #00ff66;
+  border: 1px solid #00ff66;
+  border-radius: 4px;
+  color: #fafafa;
+  padding: 4px 12px;
+`;
+
+const NewLabel = styled.p`
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+const DiscountOffer = styled.div`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #db4444;
+  border: 1px solid #db4444;
+  border-radius: 4px;
+  color: #fafafa;
+  padding: 4px 12px;
+`;
+
+const DiscountLabel = styled.p`
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
 `;
 
 const TopRightContainer = styled.div`
@@ -158,7 +240,9 @@ const ProductContainer = styled.div`
   padding-bottom: 30px;
 `;
 
-const ProductContent = styled.div``;
+const ProductContent = styled.div`
+  margin-bottom: 25px;
+`;
 
 const ProductImageWrapper = styled.div`
   align-self: center;
@@ -179,16 +263,43 @@ const PriceAndRatingContainer = styled.div`
   gap: 12px;
 `;
 
+const ColorSelection = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+`;
+
+const BorderWrapper = styled.div`
+  border: 2px solid ${(props) => (props.$isActive ? "#000" : "transparent")};
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+`;
+
+const ColorCircle = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+`;
+
 const ProductPrice = styled.span`
   color: #db4444;
   font-size: 16px;
   font-weight: 500;
 `;
 
+const OriginalPrice = styled.span`
+  color: #7f7f7f;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: line-through;
+`;
+
 const StarRatingWrapper = styled.div``;
 
 const StarIcon = styled.img``;
-
 const RatingCount = styled.span`
   font-size: 14px;
   font-weight: 500;
@@ -201,14 +312,12 @@ const ButtonContainer = styled.div`
 `;
 
 const ViewAllButton = styled.button`
+  cursor: pointer;
   background: #db4444;
   padding: 16px 48px;
   color: #fff;
   border: 1px solid #db4444;
   border-radius: 4px;
 `;
-
-const ProductOfferPrice = styled.p``;
-
 
 export default ProductsHome;

@@ -43,10 +43,12 @@
     {
       "id": 5,
       "name": "Kids Electric Car",
+      "new-label": "NEW",
       "price": "$980",
       "rating": 65,
       "category": ["Others"],
-      "image": "red-car-toy.png"
+      "image": "red-car-toy.png",
+      "colors": ["#ff0000", "#DB4444"]
     },
     {
       "id": 6,
@@ -54,15 +56,18 @@
       "price": "$1160",
       "rating": 35,
       "category": ["Others"],
-      "image": "yellow-boot.png"
+      "image": "yellow-boot.png",
+      "colors": ["#EEFF61", "#DB4444"]
     },
     {
       "id": 7,
       "name": "GP11 Shooter USB Gamepad",
+      "new-label": "NEW",
       "price": "$660",
       "rating": 55,
       "category": ["Gaming"],
-      "image": "black-controller.png"
+      "image": "black-controller.png",
+      "colors": ["#000", "#DB4444"]
     },
     {
       "id": 8,
@@ -70,11 +75,13 @@
       "price": "$660",
       "rating": 55,
       "category": ["Others"],
-      "image": "jacket.png"
+      "image": "jacket.png",
+      "colors": ["#184A48", "#DB4444"]
     },
     {
       "id": 9,
       "name": "HAVIT HV-G92 Gamepad",
+      "discount-label": "-45%",
       "offer-price": "$120",
       "price": "$160",
       "rating": 88,
@@ -84,6 +91,7 @@
     {
       "id": 10,
       "name": "AK-900 Wired Keyboard",
+      "discount-label": "-35%",
       "offer-price": "$960",
       "price": "$1160",
       "rating": 75,
@@ -93,6 +101,7 @@
     {
       "id": 11,
       "name": "IPS LCD Gaming Monitor",
+      "discount-label": "-30%",
       "offer-price": "$370",
       "price": "$400",
       "rating": 99,
@@ -102,7 +111,7 @@
     {
       "id": 12,
       "name": "RGB Liquid CPU Cooler",
-      "offer_price": "$160",
+      "offer-price": "$160",
       "price": "$170",
       "rating": 65,
       "category": ["Gaming"],
@@ -143,10 +152,12 @@
     {
       "id": 17,
       "name": "Kids Electric Car",
+      "new-label": "NEW",
       "price": "$980",
       "rating": 65,
       "category": ["Others"],
-      "image": "red-car-toy.png"
+      "image": "red-car-toy.png",
+      "colors": ["#ff0000", "#DB4444"]
     },
     {
       "id": 18,
@@ -154,15 +165,18 @@
       "price": "$1160",
       "rating": 35,
       "category": ["Others"],
-      "image": "yellow-boot.png"
+      "image": "yellow-boot.png",
+      "colors": ["#EEFF61", "#DB4444"]
     },
     {
       "id": 19,
       "name": "GP11 Shooter USB Gamepad",
+      "new-label": "NEW",
       "price": "$660",
       "rating": 55,
       "category": ["Gaming"],
-      "image": "black-controller.png"
+      "image": "black-controller.png",
+      "colors": ["#000", "#DB4444"]
     },
     {
       "id": 20,
@@ -170,7 +184,8 @@
       "price": "$660",
       "rating": 55,
       "category": ["Others"],
-      "image": "jacket.png"
+      "image": "jacket.png",
+      "colors": ["#184A48", "#DB4444"]
     }
   ]
 }

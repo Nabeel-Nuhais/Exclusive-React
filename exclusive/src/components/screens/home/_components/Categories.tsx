@@ -1,45 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Categories = ({ categoryItems, handleCategoryChange }) => {
-  return (
-    <>
-      <MainContainer>
-        <CategorySectionWrapper>
-          <CategoryHeader>
-            <IconWrapper>
-              <CategoryIcon
-                src={
-                  require("../../../../assets/images/icons/rectangle.svg")
-                    .default
-                }
-                alt="category-icon"
-              />
-            </IconWrapper>
-            <CategoryLabel>Categories</CategoryLabel>
-          </CategoryHeader>
 
-          <CategoryTitle>
-            <Heading>Browse By Category</Heading>
-          </CategoryTitle>
-          <CategoryItems>
-            <ItemsGrid>
-              {categoryItems.map((category, index) => (
-                <CategoryItem key={index} onClick={()=>handleCategoryChange(category.name)}>
-                  <IconWrapper>
-                    <GamingIcon
-                      src={require(`../../../../assets/images/icons/${category.image}`)}
-                      alt="gaming-icon"
-                    />
-                  </IconWrapper>
-                  <CategoryName>{category.name}</CategoryName>
-                </CategoryItem>
-              ))}
-            </ItemsGrid>
-          </CategoryItems>
-        </CategorySectionWrapper>
-      </MainContainer>
-    </>
+  const [activeCategory, setActiveCategory] = useState(null); 
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category.name); 
+    handleCategoryChange(category.name);
+  };
+
+  return (
+    <MainContainer>
+      <CategorySectionWrapper>
+        <CategoryHeader>
+          <IconWrapper>
+            <CategoryIcon
+              src={require("../../../../assets/images/icons/rectangle.svg").default}
+              alt="category-icon"
+            />
+          </IconWrapper>
+          <CategoryLabel>Categories</CategoryLabel>
+        </CategoryHeader>
+
+        <CategoryTitle>
+          <Heading>Browse By Category</Heading>
+        </CategoryTitle>
+        <CategoryItems>
+          <ItemsGrid>
+            {categoryItems.map((category, index) => (
+              <CategoryItem
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                $active={activeCategory === category.name} 
+              >
+                <IconWrapper>
+                  <GamingIcon
+                    src={require(`../../../../assets/images/icons/${category.image}`)}
+                    alt="gaming-icon"
+                  />
+                </IconWrapper>
+                <CategoryName>{category.name}</CategoryName>
+              </CategoryItem>
+            ))}
+          </ItemsGrid>
+        </CategoryItems>
+      </CategorySectionWrapper>
+    </MainContainer>
   );
 };
 
@@ -99,7 +106,7 @@ const CategoryItem = styled.button`
   padding: 40px 0;
   gap: 10px;
   cursor: pointer;
-  background: #fff;
+  background: ${(props) => (props.$active ? "#f5f5f5" : "#fff")};
 
   &:hover {
     background-color: #f5f5f5;
