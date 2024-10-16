@@ -28,10 +28,10 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
 
   const product = products.find((item) => item.id === Number(id)) || null;
 
-  const [selectedColor, setSelectedColor] = useState(product?.colors[0] || "");
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
   useEffect(() => {
-    if (product?.colors && product.colors.length > 0) {
+    if (product && product.colors && product.colors.length > 0) {
       setSelectedColor(product.colors[0]);
     }
   }, [product]);
