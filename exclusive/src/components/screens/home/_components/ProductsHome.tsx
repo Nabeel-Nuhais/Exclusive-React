@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import threeStar from "../../../../assets/images/icons/three-star.svg";
 import fourStar from "../../../../assets/images/icons/four-star.svg";
 import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
 import fiveStar from "../../../../assets/images/icons/five-star.svg";
+
+interface BorderWrapperProps {
+  $isActive: boolean;
+}
 
 const ProductsHome = ({ productItems }) => {
   const getStarIcon = (rating) => {
@@ -44,7 +48,7 @@ const ProductsHome = ({ productItems }) => {
           <ProductContainer>
             {eightProducts?.map((product) => (
               <ProductContent key={product.id}>
-                <TopContainer>
+                <TopContainer to={`/product/${product.id}`}>
                   {product["new-label"] && (
                     <NewArrival>
                       <NewLabel>{product["new-label"]}</NewLabel>
@@ -154,8 +158,9 @@ const AddToCartButton = styled.button`
   width: 100%;
 `;
 
-const TopContainer = styled.div`
+const TopContainer = styled(Link)`
   display: flex;
+  text-decoration: none;
   justify-content: center;
   border: 1px solid #f5f5f5;
   padding: 30px 0;
@@ -256,6 +261,7 @@ const ProductName = styled.h3`
   margin: 15px 0 5px 0;
   font-size: 16px;
   font-weight: 500;
+  color: #000;
 `;
 
 const PriceAndRatingContainer = styled.div`
@@ -269,7 +275,7 @@ const ColorSelection = styled.div`
   margin-top: 10px;
 `;
 
-const BorderWrapper = styled.div`
+const BorderWrapper = styled.div<BorderWrapperProps>`
   border: 2px solid ${(props) => (props.$isActive ? "#000" : "transparent")};
   border-radius: 50%;
   padding: 2px;
@@ -300,9 +306,11 @@ const OriginalPrice = styled.span`
 const StarRatingWrapper = styled.div``;
 
 const StarIcon = styled.img``;
+
 const RatingCount = styled.span`
   font-size: 14px;
   font-weight: 500;
+  color: #000;
 `;
 
 const ButtonContainer = styled.div`

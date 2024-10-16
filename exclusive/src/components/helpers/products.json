@@ -5,7 +5,8 @@
     { "id": 3, "name": "Camera", "image": "Camera.svg" },
     { "id": 4, "name": "Phones", "image": "CellPhone.svg" },
     { "id": 5, "name": "SmartWatch", "image": "SmartWatch.svg" },
-    { "id": 6, "name": "HeadPhones", "image": "eadphone.svg" }
+    { "id": 6, "name": "HeadPhones", "image": "eadphone.svg" },
+    { "id": 7, "name": "Others" }
   ],
   "products": [
     {

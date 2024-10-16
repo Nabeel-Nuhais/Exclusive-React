@@ -10,7 +10,12 @@ import fourStar from "../../../../assets/images/icons/four-star.svg";
 import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
 import fiveStar from "../../../../assets/images/icons/five-star.svg";
 
+interface BorderWrapperProps {
+  $isActive: boolean;
+}
+
 const ProductsList = () => {
+  
   const getStarIcon = (rating) => {
     if (rating >= 90) return fiveStar;
     if (rating >= 75) return fourHalfStar;
@@ -51,7 +56,7 @@ const ProductsList = () => {
               <HomeNavigation to={"/"} className="active">
                 Home
               </HomeNavigation>
-              \
+              /
               <ProductsNavigation to={""} className="active">
                 Products
               </ProductsNavigation>
@@ -61,7 +66,7 @@ const ProductsList = () => {
           <ProductContainer>
             {productItems?.map((product, index) => (
               <ProductContent key={product.id}>
-                <TopContainer>
+                <TopContainer to={`/product/${product.id}`}>
                   {product["new-label"] && (
                     <NewArrival>
                       <NewLabel>{product["new-label"]}</NewLabel>
@@ -167,8 +172,9 @@ const AddToCartButton = styled.button`
   width: 100%;
 `;
 
-const TopContainer = styled.div`
+const TopContainer = styled(Link)`
   display: flex;
+  text-decoration: none;
   justify-content: center;
   border: 1px solid #f5f5f5;
   padding: 30px 0;
@@ -268,6 +274,7 @@ const ProductName = styled.h3`
   margin: 15px 0 5px 0;
   font-size: 16px;
   font-weight: 500;
+  color: #000;
 `;
 
 const PriceAndRatingContainer = styled.div`
@@ -281,7 +288,7 @@ const ColorSelection = styled.div`
   margin-top: 10px;
 `;
 
-const BorderWrapper = styled.div`
+const BorderWrapper = styled.div<BorderWrapperProps>`
   border: 2px solid ${(props) => (props.$isActive ? "#000" : "transparent")};
   border-radius: 50%;
   padding: 2px;
@@ -316,6 +323,7 @@ const StarIcon = styled.img``;
 const RatingCount = styled.span`
   font-size: 14px;
   font-weight: 500;
+  color: #000;
 `;
 
 const NavigationContainer = styled.div`

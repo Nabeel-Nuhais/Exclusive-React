@@ -8,7 +8,25 @@ import ProductsHome from "./_components/ProductsHome.tsx";
 import allProucts from "../../helpers/products.json";
 import Services from "./_components/Services.tsx";
 
-const Home = () => {
+
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  rating: number;
+  category: string[];
+  image: string;
+  "new-label"?: string;
+  colors?: string[];
+  "discount-label"?: string;
+  "offer-price"?: string;
+}
+
+interface HomeProps {
+  productItems: Product[];
+}
+
+const Home: React.FC<HomeProps> = ({ productItems }) => {
 
   const { products, categories } = allProucts;
 
