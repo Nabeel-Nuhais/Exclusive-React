@@ -5,6 +5,7 @@ import TopBar from "../../../includes/TopBar.tsx";
 import Header from "../../../includes/Header.tsx";
 import Footer from "../../../includes/Footer.tsx";
 import RelatedItems from "./RelatedItems.tsx";
+import productsData from "../../../helpers/products.json"
 import threeStar from "../../../../assets/images/icons/three-star.svg";
 import fourStar from "../../../../assets/images/icons/four-star.svg";
 import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
@@ -29,6 +30,7 @@ interface ProductProps {
 }
 
 const ProductDetails: React.FC<ProductProps> = ({ products }) => {
+
   const { id } = useParams<{ id: string }>();
 
   const product = products.find((item) => item.id === Number(id)) || null;
@@ -55,6 +57,12 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  const relatedItems = productsData.products.filter(
+    (item) =>
+      item.category.some((cat) => product.category.includes(cat)) &&
+      item.id !== product.id
+  );
 
   return (
     <>
@@ -161,7 +169,7 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
         </Wrapper>
       </Main>
 
-      <RelatedItems />
+      <RelatedItems products={relatedItems} />
       <Footer />
     </>
   );
@@ -317,6 +325,7 @@ const TwoBlockContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 70px;
+  margin-bottom: 60px;
 `;
 
 const FreeDeliveryContainer = styled.div`
