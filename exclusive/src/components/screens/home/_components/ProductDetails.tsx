@@ -90,15 +90,19 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
 
               <ColorSelection>
                 Colors:
-                {product.colors.map((color) => (
-                  <BorderWrapper
-                    key={color}
-                    $isActive={color === selectedColor}
-                    onClick={() => handleColorSelect(color)}
-                  >
-                    <ColorCircle style={{ backgroundColor: color }} />
-                  </BorderWrapper>
-                ))}
+                {product.colors && product.colors.length > 0 ? (
+                  product.colors.map((color) => (
+                    <BorderWrapper
+                      key={color}
+                      $isActive={color === selectedColor}
+                      onClick={() => handleColorSelect(color)}
+                    >
+                      <ColorCircle style={{ backgroundColor: color }} />
+                    </BorderWrapper>
+                  ))
+                ) : (
+                  <span>No color options available</span>
+                )}
               </ColorSelection>
 
               <DeliveryInfoContainer>
