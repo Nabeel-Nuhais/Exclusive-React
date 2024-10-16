@@ -22,7 +22,8 @@
       "price": "$360",
       "rating": 95,
       "category": ["Camera"],
-      "image": "cannon-camera.png"
+      "image": "cannon-camera.png",
+      "stock": "In Stock"
     },
     {
       "id": 3,
@@ -30,7 +31,8 @@
       "price": "$700",
       "rating": 325,
       "category": ["Gaming", "Computers"],
-      "image": "asus-lap.png"
+      "image": "asus-lap.png",
+      "stock": "In Stock"
     },
     {
       "id": 4,
@@ -48,6 +50,7 @@
       "rating": 65,
       "category": ["Others"],
       "image": "red-car-toy.png",
+      "stock": "In Stock",
       "colors": ["#ff0000", "#DB4444"]
     },
     {
@@ -76,6 +79,7 @@
       "rating": 55,
       "category": ["Others"],
       "image": "jacket.png",
+      "stock": "In Stock",
       "colors": ["#184A48", "#DB4444"]
     },
     {
@@ -96,7 +100,8 @@
       "price": "$1160",
       "rating": 75,
       "category": ["Gaming"],
-      "image": "keyboard.png"
+      "image": "keyboard.png",
+      "stock": "In Stock"
     },
     {
       "id": 11,
@@ -106,7 +111,8 @@
       "price": "$400",
       "rating": 99,
       "category": ["Gaming", "Computers"],
-      "image": "monitor.png"
+      "image": "monitor.png",
+      "stock": "In Stock"
     },
     {
       "id": 12,
@@ -115,7 +121,8 @@
       "price": "$170",
       "rating": 65,
       "category": ["Gaming"],
-      "image": "cpu-cooler.png"
+      "image": "cpu-cooler.png",
+      "stock": "In Stock"
     },
     {
       "id": 13,
@@ -131,7 +138,8 @@
       "price": "$360",
       "rating": 95,
       "category": ["Camera"],
-      "image": "cannon-camera.png"
+      "image": "cannon-camera.png",
+      "stock": "In Stock"
     },
     {
       "id": 15,
@@ -139,7 +147,8 @@
       "price": "$700",
       "rating": 325,
       "category": ["Gaming", "Computers"],
-      "image": "asus-lap.png"
+      "image": "asus-lap.png",
+      "stock": "In Stock"
     },
     {
       "id": 16,
@@ -157,6 +166,7 @@
       "rating": 65,
       "category": ["Others"],
       "image": "red-car-toy.png",
+      "stock": "In Stock",
       "colors": ["#ff0000", "#DB4444"]
     },
     {
@@ -166,6 +176,7 @@
       "rating": 35,
       "category": ["Others"],
       "image": "yellow-boot.png",
+      "stock": "In Stock",
       "colors": ["#EEFF61", "#DB4444"]
     },
     {
@@ -176,6 +187,7 @@
       "rating": 55,
       "category": ["Gaming"],
       "image": "black-controller.png",
+      "stock": "In Stock",
       "colors": ["#000", "#DB4444"]
     },
     {

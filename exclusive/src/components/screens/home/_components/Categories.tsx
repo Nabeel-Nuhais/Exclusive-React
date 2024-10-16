@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+interface CategoryProps {
+  $active: boolean;
+}
+
 const Categories = ({ categoryItems, handleCategoryChange }) => {
 
   const [activeCategory, setActiveCategory] = useState(null); 
@@ -98,7 +102,7 @@ const ItemsGrid = styled.div`
   gap: 30px;
 `;
 
-const CategoryItem = styled.button`
+const CategoryItem = styled.button<CategoryProps>`
   border: 1px solid #b3b3b3;
   border-radius: 4px;
   display: inline-grid;

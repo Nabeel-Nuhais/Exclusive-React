@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import TopBar from "../../../includes/TopBar.tsx";
 import Header from "../../../includes/Header.tsx";
 import Footer from "../../../includes/Footer.tsx";
+import RelatedItems from "./RelatedItems.tsx";
 import threeStar from "../../../../assets/images/icons/three-star.svg";
 import fourStar from "../../../../assets/images/icons/four-star.svg";
 import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
@@ -19,7 +20,11 @@ interface ProductProps {
     name: string;
     image: string;
     rating: number;
+    price: string;
+    category: string;
     colors: string[];
+    stock?: string;
+    newLabel?: string;
   }[];
 }
 
@@ -59,8 +64,8 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
       <Main>
         <Wrapper>
           <NavigatedContainer>
-            <Home>Home</Home>/<Category>Gaming</Category>/
-            <ItemName>{product.name}</ItemName>
+            <Home to={"/"}>Home</Home>/<CategoryName>{product.category[0]}</CategoryName>
+            /<ItemName>{product.name}</ItemName>
           </NavigatedContainer>
 
           <TwoBlockContainer>
@@ -79,15 +84,24 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
                 <StarRatingWrapper>
                   <StarIcon src={getStarIcon(product.rating)} alt="star-icon" />
                 </StarRatingWrapper>
-                <ProductRating>({product.rating} Reviews)</ProductRating>
+                {product.stock ? (
+                  <>
+                    <ProductRating>({product.rating} Reviews)</ProductRating> |
+                    <IsStock>{product.stock}</IsStock>
+                  </>
+                ) : (
+                  <>
+                    <ProductRating>({product.rating} Reviews)</ProductRating> |
+                    <IsNotStock>Out of stock</IsNotStock>
+                  </>
+                )}
               </StarRatingContainer>
-              <ProductPrice>$192.00</ProductPrice>
+              <ProductPrice>{product.price}</ProductPrice>
               <ProductDescription>
                 PlayStation 5 Controller Skin High quality vinyl with air
                 channel adhesive for easy bubble-free install & mess-free
                 removal. Pressure sensitive.
               </ProductDescription>
-
               <ColorSelection>
                 Colors:
                 {product.colors && product.colors.length > 0 ? (
@@ -101,10 +115,11 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
                     </BorderWrapper>
                   ))
                 ) : (
-                  <span>No color options available</span>
+                  <span style={{ fontSize: "14px", color: "#ff0000" }}>
+                    No color options available
+                  </span>
                 )}
               </ColorSelection>
-
               <DeliveryInfoContainer>
                 <FreeDeliveryContainer>
                   <ImageWrapper>
@@ -146,6 +161,7 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
         </Wrapper>
       </Main>
 
+      <RelatedItems />
       <Footer />
     </>
   );
@@ -167,13 +183,14 @@ const NavigatedContainer = styled.div`
   gap: 12px;
 `;
 
-const Home = styled.div`
+const Home = styled(Link)`
   font-size: 14px;
+  text-decoration: none;
   font-weight: 400;
   color: #7f7f7f;
 `;
 
-const Category = styled.div`
+const CategoryName = styled.div`
   font-size: 14px;
   font-weight: 400;
   color: #7f7f7f;
@@ -215,11 +232,27 @@ const ProductName = styled.h1`
   margin: 0;
 `;
 
-const StarRatingWrapper = styled.div``;
+const StarRatingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const StarIcon = styled.img``;
 
 const ProductRating = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  color: #7f7f7f;
+`;
+
+const IsStock = styled.div`
+  color: #00ff66;
+  font-size: 14px;
+  font-weight: 400;
+`;
+
+const IsNotStock = styled.div`
+  color: #ff0000;
   font-size: 14px;
   font-weight: 400;
 `;
@@ -321,6 +354,7 @@ const FreeDeliverySubText = styled.p`
   font-size: 12px;
   font-weight: 500;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 const ReturnDeliverySubText = styled.p`
@@ -333,6 +367,7 @@ const StarRatingContainer = styled.div`
   display: flex;
   gap: 8px;
   padding: 8px 0;
+  align-items: center;
 `;
 
 export default ProductDetails;
