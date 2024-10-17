@@ -29,7 +29,6 @@ interface RelatedItemsProps {
 }
 
 const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
-
   const getStarIcon = (rating: number) => {
     if (rating >= 90) return fiveStar;
     if (rating >= 75) return fourHalfStar;
@@ -40,11 +39,11 @@ const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
   const { products: productItems } = require("../../../helpers/products.json");
 
   const initialSelectedColors = Array.isArray(productItems)
-  ? productItems.reduce((acc, product) => {
-      acc[product.id] = product.colors ? product.colors[0] : "";
-      return acc;
-    }, {})
-  : {};
+    ? productItems.reduce((acc, product) => {
+        acc[product.id] = product.colors ? product.colors[0] : "";
+        return acc;
+      }, {})
+    : {};
 
   const limitedProducts = products.slice(0, 4);
 
@@ -63,7 +62,9 @@ const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
         <CategoryHeader>
           <IconWrapper>
             <CategoryIcon
-              src={require("../../../../assets/images/icons/rectangle.svg").default}
+              src={
+                require("../../../../assets/images/icons/rectangle.svg").default
+              }
               alt="category-icon"
             />
           </IconWrapper>
@@ -93,13 +94,19 @@ const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
                 <TopRightContainer>
                   <LikeIconWrapper>
                     <LikeIcon
-                      src={require("../../../../assets/images/icons/heart.svg").default}
+                      src={
+                        require("../../../../assets/images/icons/heart.svg")
+                          .default
+                      }
                       alt="like-icon"
                     />
                   </LikeIconWrapper>
                   <ViewIconWrapper>
                     <ViewIcon
-                      src={require("../../../../assets/images/icons/view.svg").default}
+                      src={
+                        require("../../../../assets/images/icons/view.svg")
+                          .default
+                      }
                       alt="view-icon"
                     />
                   </ViewIconWrapper>
@@ -119,7 +126,10 @@ const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
                     <ProductPrice>{product.price}</ProductPrice>
                   )}
                   <StarRatingWrapper>
-                    <StarIcon src={getStarIcon(product.rating)} alt="star-icon" />
+                    <StarIcon
+                      src={getStarIcon(product.rating)}
+                      alt="star-icon"
+                    />
                   </StarRatingWrapper>
                   <RatingCount>({product.rating})</RatingCount>
                 </PriceAndRatingContainer>
@@ -185,6 +195,7 @@ const ProductContent = styled.div`
 `;
 
 const AddToCartButton = styled.button`
+  cursor: pointer;
   background: #000;
   color: #fff;
   border: none;
@@ -196,7 +207,6 @@ const AddToCartButton = styled.button`
   opacity: 0;
   transition: opacity 0.3s ease;
 `;
-
 
 const TopContainer = styled(Link)`
   display: flex;
@@ -333,6 +343,5 @@ const ViewIcon = styled.img`
   background: #fff;
   padding: 5px;
 `;
-
 
 export default RelatedItems;

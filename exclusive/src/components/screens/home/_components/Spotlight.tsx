@@ -72,6 +72,10 @@ const ContentWrapper = styled.section`
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 748px) {
+    flex-direction: column;
+  }
 `;
 
 const DetailsContainer = styled.div`
@@ -80,6 +84,10 @@ const DetailsContainer = styled.div`
   justify-content: space-between;
   width: 50%;
   padding: 0 64px;
+
+  @media (max-width: 1280px) {
+    padding: 0 0 0 30px;
+  }
 `;
 
 const HeaderSection = styled.div`
@@ -110,16 +118,22 @@ const SeriesText = styled.p`
 `;
 
 const OfferSection = styled.div`
-  margin: 0px 0;
   margin: 34px 0;
+
+  @media (max-width: 980px) {
+    margin: 15px 0;
+  }
 `;
 
 const OfferInfo = styled.h3`
   font-size: 48px;
-  font-weight: 600;
   margin: 0;
   font-weight: 600;
   color: #fff;
+
+  @media (max-width: 980px) {
+    font-size: 34px;
+  }
 `;
 
 const FooterSection = styled.div`
@@ -165,6 +179,16 @@ const ImageContainer = styled.div<ImageContainerProps>`
   background-repeat: no-repeat;
   border-radius: 12px;
   background-image: url(${(props) => props.$background});
+
+  @media (max-width: 1280px) {
+    height: 360px;
+    width: 60%;
+    background-size: cover;
+  }
+
+  @media (max-width: 980px) {
+    width: 90%;
+  }
 `;
 
 export default Spotlight;

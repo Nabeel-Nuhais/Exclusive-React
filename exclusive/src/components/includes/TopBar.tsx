@@ -49,10 +49,8 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   height: 48px;
-
-  @media (max-width: 1024px) {
-    display: block;
-    height: 68px;
+  @media (max-width: 980px) {
+    display: none;
   }
 `;
 
@@ -63,25 +61,11 @@ const Wrapper = styled.div`
   width: 75%;
   align-items: center;
   position: relative;
-
-  @media (max-width: 1024px) {
-    display: grid;
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const PromoSection = styled.div`
   position: absolute;
   display: flex;
-
-  @media (max-width: 1024px) {
-    display: inline-flex;
-    position: unset;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
 `;
 
 const PromoText = styled.p`
@@ -102,13 +86,6 @@ const LanguageSelector = styled.div`
   position: absolute;
   right: 0;
   display: flex;
-
-  @media (max-width: 1024px) {
-    position: unset;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
 `;
 
 const LanguageText = styled.div`

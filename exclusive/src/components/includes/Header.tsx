@@ -3,41 +3,50 @@ import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setMobileMenu((prev) => !prev);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
     <MainHeader>
       <Wrapper>
+        <HamburgerWrapper onClick={toggleMobileMenu}>
+          <HamburgerIcon
+            src={require("../../assets/images/icons/hamburger.svg").default}
+            alt="hamburger-icon"
+          />
+        </HamburgerWrapper>
+
         <BrandSection>
           <Logo>Exclusive</Logo>
         </BrandSection>
 
-        <NavSection>
-          <ToggleMenuButton onClick={toggleMobileMenu}>
-            <HamburgerIcon
-              src={require("../../assets/images/icons/hamburger.svg").default}
-              alt="hamburger-icon"
+        <NavWrapper $isMobileMenuOpen={isMobileMenuOpen}>
+          <CloseIconWrapper onClick={toggleMobileMenu}>
+            <CloseIcon
+              src={require("../../assets/images/icons/close-icon.svg").default}
+              alt="close-icon"
             />
-          </ToggleMenuButton>
-          <NavListWrapper open={mobileMenu}>
-            <NavItem>
-              <StyledNavLink to="/">Home</StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/contact">Contact</StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/about">About</StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/signup">Sign Up</StyledNavLink>
-            </NavItem>
-          </NavListWrapper>
-        </NavSection>
+          </CloseIconWrapper>
+          <NavSection>
+            <NavListWrapper>
+              <NavItem>
+                <StyledNavLink to="/">Home</StyledNavLink>
+              </NavItem>
+              <NavItem>
+                <StyledNavLink to="/contact">Contact</StyledNavLink>
+              </NavItem>
+              <NavItem>
+                <StyledNavLink to="/about">About</StyledNavLink>
+              </NavItem>
+              <NavItem>
+                <StyledNavLink to="/signup">Sign Up</StyledNavLink>
+              </NavItem>
+            </NavListWrapper>
+          </NavSection>
+        </NavWrapper>
 
         <RightSection>
           <SearchBar>
@@ -69,17 +78,14 @@ const Header = () => {
   );
 };
 
+// Styled Components
+
 const MainHeader = styled.header`
   padding-top: 44px;
   display: flex;
   justify-content: center;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
   padding-bottom: 7px;
-
-  @media (max-width: 1024px) {
-    position: relative;
-    padding-top: 10px;
-  }
 `;
 
 const Wrapper = styled.section`
@@ -88,64 +94,56 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media (max-width: 1024px) {
-    display: block;
-  }
 `;
 
 const BrandSection = styled.div`
+  display: flex;
+  justify-content: start;
   cursor: pointer;
-
-  @media (max-width: 1024px) {
-    text-align: start;
-  }
 `;
 
 const Logo = styled.h1`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
+  text-align: center;
 `;
 
-const NavSection = styled.nav`
-  position: relative;
-`;
-
-const ToggleMenuButton = styled.div`
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-
-  @media (max-width: 1024px) {
-    display: block;
-    position: absolute;
+const NavWrapper = styled.div`
+  @media (max-width: 980px) {
+    display: ${(props) => (props.$isMobileMenuOpen ? "flex" : "none")};
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: end;
-    bottom: 0;
+    height: 100%;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
 `;
 
-const HamburgerIcon = styled.img``;
+const NavSection = styled.nav`
+  display: flex;
+  @media (max-width: 980px) {
+    position: absolute;
+    top: 19%;
+    left: 12%;
+  }
+`;
 
-const NavListWrapper = styled.ul<{ open: boolean }>`
+const NavListWrapper = styled.ul`
   margin: 0;
   padding: 0;
-  display: ${({ open }) => (open ? "flex" : "none")};
+  display: flex;
   gap: 25px;
   list-style: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  height: 40px;
 
-  @media (min-width: 1025px) {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    gap: 44px;
-    align-items: center;
+  @media (max-width: 980px) {
+    flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -179,19 +177,21 @@ const RightSection = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-
-  @media (max-width: 1024px) {
-    justify-content: end;
-  }
 `;
 
 const SearchBar = styled.div`
   display: flex;
   border: 1px solid #f5f5f5;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 10px;
   background-color: #f5f5f5;
   border-radius: 7px;
   cursor: pointer;
+
+  @media (max-width: 980px) {
+    border: none;
+    background: #fff;
+    padding: 0;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -200,30 +200,78 @@ const SearchInput = styled.input`
   outline: none;
   font-size: 12px;
   font-weight: 400;
+
+  @media (max-width: 980px) {
+    display: none;
+  }
 `;
 
 const SearchButton = styled.div`
   cursor: pointer;
+  display: flex;
 `;
 
 const SearchIcon = styled.img`
-  height: 16px;
+  height: 18px;
+
+  @media (max-width: 540px) {
+    height: 16px;
+  }
 `;
 
 const WishlistIconWrapper = styled.div`
   cursor: pointer;
+  display: flex;
 `;
 
 const WishlistIcon = styled.img`
   height: 18px;
+  @media (max-width: 540px) {
+    height: 16px;
+  }
 `;
 
 const CartIconWrapper = styled.div`
   cursor: pointer;
+  display: flex;
 `;
 
 const CartIcon = styled.img`
   height: 22px;
+  @media (max-width: 540px) {
+    height: 20px;
+  }
+`;
+
+const HamburgerWrapper = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 980px) {
+    display: flex;
+  }
+`;
+
+const HamburgerIcon = styled.img`
+  height: 24px;
+  @media (max-width: 540px) {
+    height: 21px;
+  }
+`;
+
+const CloseIconWrapper = styled.div`
+  display: none;
+  @media (max-width: 980px) {
+    display: block;
+    position: absolute;
+    left: 12%;
+    top: 8%;
+  }
+`;
+
+const CloseIcon = styled.img`
+  height: 24px;
+  cursor: pointer;
 `;
 
 export default Header;
