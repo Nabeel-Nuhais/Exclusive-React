@@ -45,11 +45,11 @@ const Home: React.FC<HomeProps> = ({ productItems }) => {
       <TopBar />
       <Header />
       <Spotlight />
-      {/* <Categories
+      <Categories
         categoryItems={categories}
         handleCategoryChange={handleCategoryChange}
-      /> */}
-      {/* <ProductsHome productItems={filterProducts} /> */}
+      />
+      <ProductsHome productItems={filterProducts} />
       {/* <Services /> */}
       {/* <Footer /> */}
     </>

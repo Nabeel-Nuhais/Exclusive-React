@@ -73,7 +73,7 @@ const ContentWrapper = styled.section`
   padding: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 748px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -87,6 +87,10 @@ const DetailsContainer = styled.div`
 
   @media (max-width: 1280px) {
     padding: 0 0 0 30px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -133,6 +137,12 @@ const OfferInfo = styled.h3`
 
   @media (max-width: 980px) {
     font-size: 34px;
+    margin: 25px 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 34px;
+    margin: 0;
   }
 `;
 
@@ -182,12 +192,22 @@ const ImageContainer = styled.div<ImageContainerProps>`
 
   @media (max-width: 1280px) {
     height: 360px;
-    width: 60%;
     background-size: cover;
   }
 
   @media (max-width: 980px) {
     width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    height: 248px;
+    background-size: contain;
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  @media (max-width: 480px) {
+    background-size: cover;
   }
 `;
 

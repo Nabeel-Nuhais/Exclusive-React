@@ -6,11 +6,10 @@ interface CategoryProps {
 }
 
 const Categories = ({ categoryItems, handleCategoryChange }) => {
-
-  const [activeCategory, setActiveCategory] = useState(null); 
+  const [activeCategory, setActiveCategory] = useState(null);
 
   const handleCategoryClick = (category) => {
-    setActiveCategory(category.name); 
+    setActiveCategory(category.name);
     handleCategoryChange(category.name);
   };
 
@@ -20,7 +19,9 @@ const Categories = ({ categoryItems, handleCategoryChange }) => {
         <CategoryHeader>
           <IconWrapper>
             <CategoryIcon
-              src={require("../../../../assets/images/icons/rectangle.svg").default}
+              src={
+                require("../../../../assets/images/icons/rectangle.svg").default
+              }
               alt="category-icon"
             />
           </IconWrapper>
@@ -36,7 +37,7 @@ const Categories = ({ categoryItems, handleCategoryChange }) => {
               <CategoryItem
                 key={index}
                 onClick={() => handleCategoryClick(category)}
-                $active={activeCategory === category.name} 
+                $active={activeCategory === category.name}
               >
                 <IconWrapper>
                   <GamingIcon
@@ -82,6 +83,10 @@ const CategoryLabel = styled.span`
   font-size: 16px;
   font-weight: 600;
   color: #db4444;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const CategoryTitle = styled.div`
@@ -92,6 +97,10 @@ const Heading = styled.h2`
   margin: 0;
   font-size: 36px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const CategoryItems = styled.div``;
@@ -99,7 +108,15 @@ const CategoryItems = styled.div``;
 const ItemsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 30px;
+  gap: 15px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const CategoryItem = styled.button<CategoryProps>`
@@ -107,7 +124,7 @@ const CategoryItem = styled.button<CategoryProps>`
   border-radius: 4px;
   display: inline-grid;
   justify-content: center;
-  padding: 40px 0;
+  padding: 25px 0;
   gap: 10px;
   cursor: pointer;
   background: ${(props) => (props.$active ? "#f5f5f5" : "#fff")};
@@ -115,14 +132,27 @@ const CategoryItem = styled.button<CategoryProps>`
   &:hover {
     background-color: #f5f5f5;
   }
+
+  @media (max-width: 980px) {
+    padding: 10px 0;
+    gap: 5px;
+  }
 `;
 
 const CategoryName = styled.p`
   margin: 0;
   font-size: 16px;
   font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
-const GamingIcon = styled.img``;
+const GamingIcon = styled.img`
+  @media (max-width: 980px) {
+    width: 38px;
+  }
+`;
 
 export default Categories;
