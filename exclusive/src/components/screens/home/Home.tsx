@@ -50,8 +50,8 @@ const Home: React.FC<HomeProps> = ({ productItems }) => {
         handleCategoryChange={handleCategoryChange}
       />
       <ProductsHome productItems={filterProducts} />
-      {/* <Services /> */}
-      {/* <Footer /> */}
+      <Services />
+      <Footer />
     </>
   );
 };

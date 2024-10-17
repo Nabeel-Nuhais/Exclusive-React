@@ -80,12 +80,37 @@ const ServicesWrapper = styled.div`
   max-width: 100%;
   width: 75%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 50px 0 80px 0;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const ServiceItem = styled.div`
   display: flex;
+
+  @media (max-width: 1024px) {
+    &&:nth-child(2) {
+      margin: 0 30px;
+    }
+    &&:nth-child(3) {
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 701px) {
+    &&:nth-child(2) {
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &&:nth-child(2) {
+      margin: 30px 0 0 0;
+    }
+  }
 `;
 
 const ServiceContent = styled.div``;
@@ -116,6 +141,10 @@ const ServiceTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
   padding: 25px 0 10px 0;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
 
 const ServiceDescription = styled.p`
