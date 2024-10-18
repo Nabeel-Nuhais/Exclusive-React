@@ -5,7 +5,7 @@ import TopBar from "../../../includes/TopBar.tsx";
 import Header from "../../../includes/Header.tsx";
 import Footer from "../../../includes/Footer.tsx";
 import RelatedItems from "./RelatedItems.tsx";
-import productsData from "../../../helpers/products.json"
+import productsData from "../../../helpers/products.json";
 import threeStar from "../../../../assets/images/icons/three-star.svg";
 import fourStar from "../../../../assets/images/icons/four-star.svg";
 import fourHalfStar from "../../../../assets/images/icons/four-half-star.svg";
@@ -30,7 +30,6 @@ interface ProductProps {
 }
 
 const ProductDetails: React.FC<ProductProps> = ({ products }) => {
-
   const { id } = useParams<{ id: string }>();
 
   const product = products.find((item) => item.id === Number(id)) || null;
@@ -72,8 +71,9 @@ const ProductDetails: React.FC<ProductProps> = ({ products }) => {
       <Main>
         <Wrapper>
           <NavigatedContainer>
-            <Home to={"/"}>Home</Home>/<CategoryName>{product.category[0]}</CategoryName>
-            /<ItemName>{product.name}</ItemName>
+            <Home to={"/"}>Home</Home>/
+            <CategoryName>{product.category[0]}</CategoryName>/
+            <ItemName>{product.name}</ItemName>
           </NavigatedContainer>
 
           <TwoBlockContainer>
@@ -189,6 +189,10 @@ const NavigatedContainer = styled.div`
   padding: 60px 0;
   display: flex;
   gap: 12px;
+
+  @media (max-width: 360px) {
+    gap: 10px;
+  }
 `;
 
 const Home = styled(Link)`
@@ -217,11 +221,19 @@ const ProductBorder = styled.div`
   border: 1px solid #f5f5f5;
   background: #f5f5f5;
   border-radius: 4px;
+
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `;
 
 const ProductImageContainer = styled.div`
   align-self: center;
   padding: 160px 0;
+
+  @media (max-width: 980px) {
+    padding: 60px 0;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -232,12 +244,20 @@ const ProductImage = styled.img`
 const ProductDetailsContainer = styled.div`
   width: 50%;
   align-self: center;
+
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `;
 
 const ProductName = styled.h1`
   font-size: 24px;
   font-weight: 600;
   margin: 0;
+
+  @media (max-width: 640px) {
+    font-size: 22px;
+  }
 `;
 
 const StarRatingWrapper = styled.div`
@@ -245,29 +265,49 @@ const StarRatingWrapper = styled.div`
   justify-content: center;
 `;
 
-const StarIcon = styled.img``;
+const StarIcon = styled.img`
+  @media (max-width: 360px) {
+    width: 77px;
+  }
+`;
 
 const ProductRating = styled.div`
   font-size: 14px;
   font-weight: 400;
   color: #7f7f7f;
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
 `;
 
 const IsStock = styled.div`
   color: #00ff66;
   font-size: 14px;
   font-weight: 400;
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
 `;
 
 const IsNotStock = styled.div`
   color: #ff0000;
   font-size: 14px;
   font-weight: 400;
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
 `;
 
 const ProductPrice = styled.span`
   font-weight: 400;
   font-size: 24px;
+
+  @media (max-width: 640px) {
+    font-size: 22px;
+  }
 `;
 
 const ProductDescription = styled.p`
@@ -276,6 +316,10 @@ const ProductDescription = styled.p`
   font-weight: 400;
   padding: 12px 0 15px 0;
   border-bottom: 1px solid #9a9a9a;
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
 `;
 
 const ColorSelection = styled.div`
@@ -286,6 +330,10 @@ const ColorSelection = styled.div`
   align-items: center;
   margin: 0;
   padding: 20px 0;
+
+  @media (max-width: 640px) {
+    font-size: 18px;
+  }
 `;
 
 const BorderWrapper = styled.div<BorderWrapperProps>`
@@ -314,18 +362,36 @@ const FreeDeliveryText = styled.span`
   margin: 0%;
   font-size: 16px;
   font-weight: 500;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
 `;
 
 const ReturnDeliveryText = styled.span`
   margin: 0;
   font-size: 16px;
   font-weight: 500;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
 `;
 const TwoBlockContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 70px;
   margin-bottom: 60px;
+
+  @media (max-width: 980px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  @media (max-width: 640px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const FreeDeliveryContainer = styled.div`
@@ -377,6 +443,10 @@ const StarRatingContainer = styled.div`
   gap: 8px;
   padding: 8px 0;
   align-items: center;
+
+  @media (max-width: 360px) {
+    gap: 5px;
+  }
 `;
 
 export default ProductDetails;

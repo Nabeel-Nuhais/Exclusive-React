@@ -231,7 +231,8 @@ const SendButton = styled.button`
 const SendIcon = styled.img``;
 
 const SupportSection = styled.div`
-  margin-bottom: 35px;`;
+  margin-bottom: 35px;
+`;
 const ContactDetails = styled.ul`
   list-style: none;
   padding: 0;
@@ -249,7 +250,8 @@ const ContactItem = styled.li`
 `;
 
 const AccountSection = styled.div`
-  margin-bottom: 35px;`;
+  margin-bottom: 35px;
+`;
 const LinksList = styled.ul`
   list-style: none;
   padding: 0;
@@ -271,10 +273,12 @@ const LinkItem = styled.li`
 `;
 
 const QuickLinksSection = styled.div`
-  margin-bottom: 35px;`;
+  margin-bottom: 35px;
+`;
 
 const DownloadSection = styled.div`
-  margin-bottom: 35px;`;
+  margin-bottom: 35px;
+`;
 const PromotionText = styled.p`
   color: #a9a9a9;
   margin: 0;
@@ -322,6 +326,10 @@ const FooterTextContainer = styled.div`
   gap: 10px;
   align-items: center;
   padding: 40px 0 20px 0;
+
+  @media (max-width: 480px) {
+    padding: 0 0 20px 0;
+  }
 `;
 const CopyrightWrapper = styled.div`
   width: 20px;
@@ -336,6 +344,10 @@ const FooterText = styled.p`
   margin: 0;
   font-size: 16px;
   font-weight: 400;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 export default Footer;

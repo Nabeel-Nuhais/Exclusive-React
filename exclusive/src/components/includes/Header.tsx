@@ -107,6 +107,10 @@ const Logo = styled.h1`
   font-size: 24px;
   font-weight: 700;
   text-align: center;
+
+  @media (max-width: 980px) {
+    padding-bottom: 5px;
+  }
 `;
 
 const NavWrapper = styled.div`

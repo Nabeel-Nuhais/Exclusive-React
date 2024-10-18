@@ -156,7 +156,6 @@ const RelatedItems: React.FC<RelatedItemsProps> = ({ products }) => {
 const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 15px 0 80px 0;
 `;
 
 const CategorySectionWrapper = styled.div`
@@ -164,122 +163,40 @@ const CategorySectionWrapper = styled.div`
   max-width: 75%;
 `;
 
-const CategoryHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 40px 0px 50px;
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const CategoryIcon = styled.img``;
-
-const CategoryLabel = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-  color: #db4444;
-`;
-
-const ProductContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-`;
-
-const ProductContent = styled.div`
-  margin-bottom: 25px;
-`;
-
 const AddToCartButton = styled.button`
-  cursor: pointer;
   background: #000;
+  cursor: pointer;
   color: #fff;
   border: none;
   padding: 10px 20px;
-  border-radius: 0 0 4px 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
   position: absolute;
-  bottom: 0;
-  width: 100%;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  bottom: 0px;
+  width: 100%;
 `;
 
 const TopContainer = styled(Link)`
   display: flex;
-  justify-content: center;
   text-decoration: none;
+  justify-content: center;
   border: 1px solid #f5f5f5;
+  padding: 30px 0;
   background: #f5f5f5;
   border-radius: 4px;
-  position: relative;
   height: 60%;
-  padding: 30px 0;
   cursor: pointer;
+  position: relative;
 
   &:hover ${AddToCartButton} {
     opacity: 1;
   }
-`;
 
-const ProductImageWrapper = styled.div`
-  align-self: center;
-`;
-
-const ProductImage = styled.img``;
-
-const ProductDetails = styled.div``;
-
-const ProductName = styled.h3`
-  margin: 15px 0 5px 0;
-  font-size: 16px;
-  font-weight: 500;
-`;
-
-const PriceAndRatingContainer = styled.div`
-  display: flex;
-  gap: 12px;
-`;
-
-const ProductPrice = styled.span`
-  color: #db4444;
-  font-weight: 500;
-`;
-
-const OriginalPrice = styled.span`
-  text-decoration: line-through;
-  color: #7f7f7f;
-`;
-
-const StarRatingWrapper = styled.div``;
-
-const StarIcon = styled.img``;
-
-const RatingCount = styled.span`
-  font-size: 14px;
-`;
-
-const ColorSelection = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-const BorderWrapper = styled.div<BorderWrapperProps>`
-  border: 2px solid ${(props) => (props.$isActive ? "#000" : "transparent")};
-  border-radius: 50%;
-  padding: 2px;
-  cursor: pointer;
-  width: 18px;
-  height: 18px;
-`;
-
-const ColorCircle = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  @media (max-width: 1280px) {
+    padding: 15px 0;
+  }
 `;
 
 const NewArrival = styled.div`
@@ -344,4 +261,142 @@ const ViewIcon = styled.img`
   padding: 5px;
 `;
 
+const ProductContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 30px;
+
+  @media (max-width: 1536px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const ProductContent = styled.div`
+  margin-bottom: 25px;
+
+  @media (max-width: 540px) {
+    &&:first-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+const ProductImageWrapper = styled.div`
+  align-self: center;
+`;
+
+const ProductImage = styled.img`
+  @media (max-width: 980px) {
+    width: 95px;
+  }
+`;
+
+const ProductDetails = styled.div``;
+
+const ProductName = styled.h3`
+  margin: 15px 0 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
+`;
+
+const PriceAndRatingContainer = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+const ColorSelection = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 540px) {
+    margin-top: 0px;
+  }
+`;
+
+const BorderWrapper = styled.div<BorderWrapperProps>`
+  border: 2px solid ${(props) => (props.$isActive ? "#000" : "transparent")};
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+`;
+
+const ColorCircle = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+`;
+
+const ProductPrice = styled.span`
+  color: #db4444;
+  font-size: 16px;
+  font-weight: 500;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
+`;
+
+const OriginalPrice = styled.span`
+  color: #7f7f7f;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: line-through;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
+`;
+
+const StarRatingWrapper = styled.div``;
+
+const StarIcon = styled.img``;
+
+const RatingCount = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+`;
+
+const CategoryHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 40px 0px 50px;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const CategoryIcon = styled.img``;
+
+const CategoryLabel = styled.span`
+  font-size: 16px;
+  font-weight: 600;
+  color: #db4444;
+`;
 export default RelatedItems;

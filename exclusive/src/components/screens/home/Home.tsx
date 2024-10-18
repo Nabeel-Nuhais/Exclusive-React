@@ -8,7 +8,6 @@ import ProductsHome from "./_components/ProductsHome.tsx";
 import allProucts from "../../helpers/products.json";
 import Services from "./_components/Services.tsx";
 
-
 interface Product {
   id: number;
   name: string;
@@ -27,7 +26,6 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ productItems }) => {
-
   const { products, categories } = allProucts;
 
   const [filterProducts, setFilterProducts] = useState(products);

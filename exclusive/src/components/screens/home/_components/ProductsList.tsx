@@ -15,7 +15,6 @@ interface BorderWrapperProps {
 }
 
 const ProductsList = () => {
-  
   const getStarIcon = (rating) => {
     if (rating >= 90) return fiveStar;
     if (rating >= 75) return fourHalfStar;
@@ -262,15 +261,16 @@ const ProductContainer = styled.div`
   border-bottom: 1px solid #b3b3b3;
   padding-bottom: 30px;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1536px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
-  @media (max-width: 540px) {
+  @media (max-width: 640px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;
