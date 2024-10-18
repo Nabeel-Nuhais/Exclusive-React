@@ -180,7 +180,9 @@ const TopSection = styled.div`
     flex-wrap: wrap;
   }
 `;
-const SubscribeSection = styled.div``;
+const SubscribeSection = styled.div`
+  margin-bottom: 35px;
+`;
 const Content = styled.div``;
 const SectionTitleMain = styled.h2`
   margin: 0;
@@ -220,10 +222,6 @@ const InputField = styled.input`
   border: none;
   font-size: 16px;
   font-weight: 400;
-
-  @media (max-width: 360px) {
-    width: 81%;
-  }
 `;
 const SendButton = styled.button`
   border: none;
@@ -233,15 +231,7 @@ const SendButton = styled.button`
 const SendIcon = styled.img``;
 
 const SupportSection = styled.div`
-  @media (max-width: 1280px) {
-    margin: 0 20px;
-  }
-
-  @media (max-width: 614px) {
-    margin-top: 35px;
-    margin-left: 0;
-  }
-`;
+  margin-bottom: 35px;`;
 const ContactDetails = styled.ul`
   list-style: none;
   padding: 0;
@@ -259,18 +249,7 @@ const ContactItem = styled.li`
 `;
 
 const AccountSection = styled.div`
-  @media (max-width: 1280px) {
-    margin: 0 20px;
-  }
-
-  @media (max-width: 816px) {
-    margin-top: 35px;
-  }
-
-  @media (max-width: 614px) {
-    margin: 35px 0 0 0;
-  }
-`;
+  margin-bottom: 35px;`;
 const LinksList = styled.ul`
   list-style: none;
   padding: 0;
@@ -292,20 +271,10 @@ const LinkItem = styled.li`
 `;
 
 const QuickLinksSection = styled.div`
-  @media (max-width: 1280px) {
-    margin: 0px 20px;
-  }
-
-  @media (max-width: 1007px) {
-    margin: 35px 0 0 0;
-  }
-`;
+  margin-bottom: 35px;`;
 
 const DownloadSection = styled.div`
-  @media (max-width: 1280px) {
-    margin: 35px 0 0 0;
-  }
-`;
+  margin-bottom: 35px;`;
 const PromotionText = styled.p`
   color: #a9a9a9;
   margin: 0;
