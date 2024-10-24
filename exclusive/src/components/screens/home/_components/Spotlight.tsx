@@ -2,10 +2,6 @@ import React from "react";
 import BgImage from "../../../../assets/images/iphone.jpg";
 import styled from "styled-components";
 
-interface ImageContainerProps {
-  $background: string;
-}
-
 const Spotlight = () => {
   return (
     <>
@@ -47,7 +43,7 @@ const Spotlight = () => {
               </ActionButton>
             </FooterSection>
           </DetailsContainer>
-          <ImageContainer $background={BgImage} />
+          <ImageContainer src={BgImage} alt="iphone-spotlight" />
         </ContentWrapper>
       </SpotlightSection>
     </>
@@ -181,14 +177,13 @@ const ArrowIcon = styled.img`
   width: 100%;
 `;
 
-const ImageContainer = styled.div<ImageContainerProps>`
+const ImageContainer = styled.img`
   height: 453px;
   width: 50%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 12px;
-  background-image: url(${(props) => props.$background});
 
   @media (max-width: 1280px) {
     height: 360px;

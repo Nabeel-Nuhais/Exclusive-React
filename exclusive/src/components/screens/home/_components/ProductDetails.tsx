@@ -314,6 +314,7 @@ const ProductDescription = styled.p`
   margin: 0;
   font-size: 14px;
   font-weight: 400;
+  font-family: regular;
   padding: 12px 0 15px 0;
   border-bottom: 1px solid #9a9a9a;
 

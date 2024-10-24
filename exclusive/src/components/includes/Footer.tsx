@@ -100,7 +100,7 @@ const Footer = () => {
                   </AppInstallers>
                 </DownloadOptions>
                 <SocialLinks>
-                  <FacebookLink to={"#"}>
+                  <FacebookLink to={"https://www.facebook.com/"} target="blank">
                     <FacebookIcon
                       src={
                         require("../../assets/images/icons/facebook.svg")
@@ -109,7 +109,7 @@ const Footer = () => {
                       alt="facebook-icon"
                     />
                   </FacebookLink>
-                  <TwitterLink to={"#"}>
+                  <TwitterLink to={"https://x.com/?lang=en"} target="blank">
                     <TwitterIcon
                       src={
                         require("../../assets/images/icons/twitter.svg").default
@@ -117,7 +117,10 @@ const Footer = () => {
                       alt="twitter-icon"
                     />
                   </TwitterLink>
-                  <InstagramLink to={"#"}>
+                  <InstagramLink
+                    to={"https://www.instagram.com/"}
+                    target="blank"
+                  >
                     <InstagramIcon
                       src={
                         require("../../assets/images/icons/instagram.svg")
@@ -126,7 +129,7 @@ const Footer = () => {
                       alt="instagram-icon"
                     />
                   </InstagramLink>
-                  <LinkedInLink to={"#"}>
+                  <LinkedInLink to={"https://in.linkedin.com/"} target="blank">
                     <LinkedInIcon
                       src={
                         require("../../assets/images/icons/linkedin.svg")
@@ -179,6 +182,11 @@ const TopSection = styled.div`
   @media (max-width: 1280px) {
     flex-wrap: wrap;
   }
+  
+  @media (max-width: 980px) {
+    justify-content: normal;
+    gap: 30px;
+  }
 `;
 const SubscribeSection = styled.div`
   margin-bottom: 35px;
@@ -189,6 +197,7 @@ const SectionTitleMain = styled.h2`
   color: #fff;
   font-size: 24px;
   font-weight: 700;
+  cursor: pointer;
 `;
 const SectionSubtitle = styled.h3`
   margin: 0;
@@ -196,6 +205,7 @@ const SectionSubtitle = styled.h3`
   font-weight: 500;
   color: #fff;
   padding: 24px 0px;
+  cursor: pointer;
 `;
 const SectionTitle = styled.h2`
   margin: 0;
@@ -203,6 +213,7 @@ const SectionTitle = styled.h2`
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 24px;
+  cursor: pointer;
 `;
 const OfferText = styled.p`
   margin: 0;
@@ -222,6 +233,7 @@ const InputField = styled.input`
   border: none;
   font-size: 16px;
   font-weight: 400;
+  outline: none;
 `;
 const SendButton = styled.button`
   border: none;
