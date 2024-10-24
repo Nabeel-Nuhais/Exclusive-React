@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import React, { useState } from "react";
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
           />
         </HamburgerWrapper>
 
-        <BrandSection>
+        <BrandSection to={"/"}>
           <Logo>Exclusive</Logo>
         </BrandSection>
 
@@ -96,8 +96,10 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
-const BrandSection = styled.div`
+const BrandSection = styled(Link)`
   display: flex;
+  text-decoration: none;
+  color: #000;
   justify-content: start;
   cursor: pointer;
 `;
